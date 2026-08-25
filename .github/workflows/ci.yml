@@ -1,17 +1,17 @@
 name: Weather Pipeline CI/CD (JS)
 
 on:
-  push: //runs workflow automatically everytime to send work to repo
+  push: 
   schedule:
     - cron: "0 */2 * * *" 
   workflow_dispatch //lets you manually trigger the workflow from gitHub
 
 permissions:
-  contents: write //every 2 hours our script will run and we will ask our api for info and we will update our jason and csv- gives permission for gitHub to write our files. 
+  contents: write 
 
-Jobs:
+jobs:
   tests_and_fetch:
-    runs-on: ubuntu-latest //tells github to run on a virtual machine using ubuntu
+    runs-on: ubuntu-latest 
     steps: 
       - name: Checkout repo
         uses: actions/checkout@v4
