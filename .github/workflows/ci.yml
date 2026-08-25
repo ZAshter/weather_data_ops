@@ -1,0 +1,44 @@
+name: Weather Pipeline CI/CD (JS)
+
+on:
+  push: //runs workflow automatically everytime to send work to repo
+  schedule:
+    - cron: "0 */2 * * *" 
+  workflow_dispatch //lets you manually trigger the workflow from gitHub
+
+permissions:
+  contents: write //every 2 hours our script will run and we will ask our api for info and we will update our jason and csv- gives permission for gitHub to write our files. 
+
+Jobs:
+  tests_and_fetch:
+    runs-on: ubuntu-latest //tells github to run on a virtual machine using ubuntu
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Use node.JS
+        uses: actions/setup-node@v4
+        with:
+              node-version: "22"
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with: 
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install Dependencies
+        run: npm ci 
+      - name: Fetch latest Weather  
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY}}
+          CITY: ${{ secrets.CITY }}
+        run: node fetchWeather.js 
+      - name: run tests 
+        run: npm test
+      - name: Comit weather data if it changes 
+        run: 
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/weather.json data/weather_log.csv || true
+          git commit -m "ci update weather data" || echo "no changes to commit"
+          git push || echo "push failed or no changes"
+      - name: Trigger Render Deploy 
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
