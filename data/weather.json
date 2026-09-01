@@ -24,14 +24,14 @@
   },
   "visibility": 10000,
   "wind": {
-    "speed": 0.51,
-    "deg": 10,
-    "gust": 0.52
+    "speed": 0.45,
+    "deg": 43,
+    "gust": 0.46
   },
   "clouds": {
-    "all": 7
+    "all": 9
   },
-  "dt": 1788228045,
+  "dt": 1788235467,
   "sys": {
     "type": 2,
     "id": 2094972,
@@ -43,5 +43,5 @@
   "id": 3143244,
   "name": "Oslo",
   "cod": 200,
-  "_last_updated_utc": "2026-09-01T02:04:34.774Z"
+  "_last_updated_utc": "2026-09-01T04:05:19.540Z"
 }
