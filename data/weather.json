@@ -8,33 +8,33 @@
       "id": 804,
       "main": "Clouds",
       "description": "overcast clouds",
-      "icon": "04d"
+      "icon": "04n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 14.88,
-    "feels_like": 14.36,
+    "temp": 13.09,
+    "feels_like": 12.75,
     "temp_min": 13.09,
-    "temp_max": 14.98,
+    "temp_max": 13.47,
     "pressure": 1031,
-    "humidity": 74,
+    "humidity": 88,
     "sea_level": 1031,
     "grnd_level": 1013
   },
   "visibility": 10000,
   "wind": {
-    "speed": 3.17,
-    "deg": 115,
-    "gust": 6.95
+    "speed": 3.13,
+    "deg": 74,
+    "gust": 6.24
   },
   "clouds": {
-    "all": 93
+    "all": 90
   },
-  "dt": 1790778040,
+  "dt": 1790799935,
   "sys": {
     "type": 2,
-    "id": 46775,
+    "id": 2094972,
     "country": "NO",
     "sunrise": 1790745565,
     "sunset": 1790787277
@@ -43,5 +43,5 @@
   "id": 3143244,
   "name": "Oslo",
   "cod": 200,
-  "_last_updated_utc": "2026-09-30T14:29:33.083Z"
+  "_last_updated_utc": "2026-09-30T20:25:57.017Z"
 }
